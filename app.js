@@ -10490,7 +10490,7 @@ async function renderLernwerkstatt(){
  {title:"Üben und festigen",sub:"Ich will üben und mich auf Prüfungen vorbereiten.",color:"#3fa66a",items:[
  [" ","Fachaufsatz-Training","Fachaufsatz Pädagogik/Psychologie an echten Prüfungsaufgaben üben.","fachaufsatz"],
  [" ","Zuordnungsübungen","Begriff und Erklärung zuordnen, per Knopfdruck selbst überprüfen.","zuordnung"],
- [" ","Vorbereitung auf die Kurzarbeit","22 interaktive Übungen zu Psychoanalyse und Entwicklung: Memory, Blockfall, Theorievergleich, Tafelbild ergänzen, Zuordnung, K-Prim.","kurzarbeit"],
+ [" ","Vorbereitung auf die Kurzarbeit","22 interaktive Übungen zu Psychoanalyse und Entwicklung: Memory, Blockfall, Theorievergleich, Lückentext, Zuordnung, K-Prim.","kurzarbeit"],
  [" ","Lern-Werkzeuge","Karteikarten, Fokus-Timer und Glossar zum selbstständigen Lernen.","lernwerkzeuge"],
  [" ","Uhr & Timer","Aktuelle Uhrzeit im Blick, plus frei einstellbarer Timer für alle.","uhr-timer"]
  ]},
