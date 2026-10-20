@@ -19,53 +19,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
-  ]
- },
- {
-  "id": "kurz-zuordnung-entwicklung",
-  "titel": "Zuordnung Entwicklung",
-  "fach": "Pädagogik/Psychologie",
-  "beschreibung": "Merkmale des Entwicklungsbegriffs und die drei Bedingungen mit Beispielen verbinden.",
-  "datei": "zuordnung.html?set=kurz-zuordnung-entwicklung",
-  "ergebnis": true,
-  "parameter": [
-   {
-    "name": "spiel",
-    "label": "Mischung (Nummer)",
-    "typ": "zahl",
-    "min": 1,
-    "max": 99,
-    "standard": 1
-   }
-  ],
-  "thema": "Entwicklung",
-  "pfad": [
-   "LB 1",
-   "Entwicklung"
-  ]
- },
- {
-  "id": "kurz-zuordnung-wechselwirkung",
-  "titel": "Zuordnung Wirkbeziehungen",
-  "fach": "Pädagogik/Psychologie",
-  "beschreibung": "Fälle den sechs Wirkbeziehungen von Anlage, Umwelt und Selbststeuerung zuordnen.",
-  "datei": "zuordnung.html?set=kurz-zuordnung-wechselwirkung",
-  "ergebnis": true,
-  "parameter": [
-   {
-    "name": "spiel",
-    "label": "Mischung (Nummer)",
-    "typ": "zahl",
-    "min": 1,
-    "max": 99,
-    "standard": 1
-   }
-  ],
-  "thema": "Entwicklung",
-  "pfad": [
-   "LB 1",
-   "Entwicklung"
+   "Psychoanalyse (Freud)",
+   "Zuordnung"
   ]
  },
  {
@@ -88,30 +43,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
-  ]
- },
- {
-  "id": "kurz-memory-entwicklung",
-  "titel": "Memory Entwicklung",
-  "fach": "Pädagogik/Psychologie",
-  "beschreibung": "Begriffe der Entwicklungspsychologie mit Erklärungen paaren.",
-  "datei": "memory.html?set=kurz-memory-entwicklung",
-  "ergebnis": true,
-  "parameter": [
-   {
-    "name": "spiel",
-    "label": "Mischung (Nummer)",
-    "typ": "zahl",
-    "min": 1,
-    "max": 99,
-    "standard": 1
-   }
-  ],
-  "thema": "Entwicklung",
-  "pfad": [
-   "LB 1",
-   "Entwicklung"
+   "Psychoanalyse (Freud)",
+   "Memory"
   ]
  },
  {
@@ -134,7 +67,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
+   "Psychoanalyse (Freud)",
+   "Blockfall"
   ]
  },
  {
@@ -157,30 +91,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
-  ]
- },
- {
-  "id": "kurz-blockfall-entwicklung",
-  "titel": "Blockfall Anlage, Umwelt, Selbststeuerung",
-  "fach": "Pädagogik/Psychologie",
-  "beschreibung": "Fälle und Aussagen den drei Entwicklungsbedingungen zuordnen.",
-  "datei": "blockfall.html?set=kurz-blockfall-entwicklung",
-  "ergebnis": true,
-  "parameter": [
-   {
-    "name": "spiel",
-    "label": "Mischung (Nummer)",
-    "typ": "zahl",
-    "min": 1,
-    "max": 99,
-    "standard": 1
-   }
-  ],
-  "thema": "Entwicklung",
-  "pfad": [
-   "LB 1",
-   "Entwicklung"
+   "Psychoanalyse (Freud)",
+   "Blockfall"
   ]
  },
  {
@@ -203,7 +115,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
+   "Psychoanalyse (Freud)",
+   "Blockfall"
   ]
  },
  {
@@ -226,7 +139,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
+   "Psychoanalyse (Freud)",
+   "Theorievergleich"
   ]
  },
  {
@@ -249,7 +163,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
+   "Psychoanalyse (Freud)",
+   "Theorievergleich"
   ]
  },
  {
@@ -272,7 +187,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
+   "Psychoanalyse (Freud)",
+   "Theorievergleich"
   ]
  },
  {
@@ -295,30 +211,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
-  ]
- },
- {
-  "id": "kurz-vergleich-einfluesse",
-  "titel": "Theorievergleich Fördernde und hemmende Einflüsse",
-  "fach": "Pädagogik/Psychologie",
-  "beschreibung": "Erziehungseinflüsse auf die Entwicklung sortieren.",
-  "datei": "vergleich.html?set=kurz-vergleich-einfluesse",
-  "ergebnis": true,
-  "parameter": [
-   {
-    "name": "spiel",
-    "label": "Mischung (Nummer)",
-    "typ": "zahl",
-    "min": 1,
-    "max": 99,
-    "standard": 1
-   }
-  ],
-  "thema": "Entwicklung",
-  "pfad": [
-   "LB 1",
-   "Entwicklung"
+   "Psychoanalyse (Freud)",
+   "Theorievergleich"
   ]
  },
  {
@@ -341,7 +235,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
+   "Psychoanalyse (Freud)",
+   "Lückentext"
   ]
  },
  {
@@ -364,53 +259,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
-  ]
- },
- {
-  "id": "kurz-luecken-begriff",
-  "titel": "Lückentext Begriff Entwicklung",
-  "fach": "Pädagogik/Psychologie",
-  "beschreibung": "Die sechs Merkmale des Entwicklungsbegriffs ergänzen.",
-  "datei": "luecken.html?set=kurz-luecken-begriff",
-  "ergebnis": true,
-  "parameter": [
-   {
-    "name": "spiel",
-    "label": "Mischung (Nummer)",
-    "typ": "zahl",
-    "min": 1,
-    "max": 99,
-    "standard": 1
-   }
-  ],
-  "thema": "Entwicklung",
-  "pfad": [
-   "LB 1",
-   "Entwicklung"
-  ]
- },
- {
-  "id": "kurz-luecken-bedingungen",
-  "titel": "Lückentext Bedingungen der Entwicklung",
-  "fach": "Pädagogik/Psychologie",
-  "beschreibung": "Anlage, Umwelt, Selbststeuerung und ihr Zusammenwirken ergänzen.",
-  "datei": "luecken.html?set=kurz-luecken-bedingungen",
-  "ergebnis": true,
-  "parameter": [
-   {
-    "name": "spiel",
-    "label": "Mischung (Nummer)",
-    "typ": "zahl",
-    "min": 1,
-    "max": 99,
-    "standard": 1
-   }
-  ],
-  "thema": "Entwicklung",
-  "pfad": [
-   "LB 1",
-   "Entwicklung"
+   "Psychoanalyse (Freud)",
+   "Lückentext"
   ]
  },
  {
@@ -433,7 +283,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
+   "Psychoanalyse (Freud)",
+   "Lückentext"
   ]
  },
  {
@@ -456,7 +307,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
+   "Psychoanalyse (Freud)",
+   "Lückentext"
   ]
  },
  {
@@ -470,21 +322,8 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
-  ]
- },
- {
-  "id": "kurz-kprim-entwicklung",
-  "titel": "K-Prim Entwicklungspsychologie",
-  "fach": "Pädagogik/Psychologie",
-  "beschreibung": "Vier Aufgaben mit je vier Aussagen: trifft zu oder nicht?",
-  "datei": "kprim.html?set=kurz-kprim-entwicklung",
-  "ergebnis": true,
-  "parameter": [],
-  "thema": "Entwicklung",
-  "pfad": [
-   "LB 1",
-   "Entwicklung"
+   "Psychoanalyse (Freud)",
+   "K-Prim"
   ]
  },
  {
@@ -518,7 +357,206 @@
   "thema": "Psychoanalyse (Freud)",
   "pfad": [
    "LB 1",
-   "Psychoanalyse (Freud)"
+   "Psychoanalyse (Freud)",
+   "Begriffe-Tetris"
+  ]
+ },
+ {
+  "id": "kurz-rennen-psychoanalyse",
+  "titel": "Wichtel-Schubkarrenrennen Psychoanalyse",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "2 bis 8 Teams treten gleichzeitig an: Bedeutung von Fachbegriffen und Fälle zur Psychoanalyse.",
+  "datei": "rennen.html?set=kurz-rennen-psychoanalyse",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Psychoanalyse (Freud)",
+  "pfad": [
+   "LB 1",
+   "Psychoanalyse (Freud)",
+   "Wichtel-Schubkarrenrennen"
+  ]
+ },
+ {
+  "id": "kurz-zuordnung-entwicklung",
+  "titel": "Zuordnung Entwicklung",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "Merkmale des Entwicklungsbegriffs und die drei Bedingungen mit Beispielen verbinden.",
+  "datei": "zuordnung.html?set=kurz-zuordnung-entwicklung",
+  "ergebnis": true,
+  "parameter": [
+   {
+    "name": "spiel",
+    "label": "Mischung (Nummer)",
+    "typ": "zahl",
+    "min": 1,
+    "max": 99,
+    "standard": 1
+   }
+  ],
+  "thema": "Entwicklung",
+  "pfad": [
+   "LB 1",
+   "Entwicklung",
+   "Zuordnung"
+  ]
+ },
+ {
+  "id": "kurz-zuordnung-wechselwirkung",
+  "titel": "Zuordnung Wirkbeziehungen",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "Fälle den sechs Wirkbeziehungen von Anlage, Umwelt und Selbststeuerung zuordnen.",
+  "datei": "zuordnung.html?set=kurz-zuordnung-wechselwirkung",
+  "ergebnis": true,
+  "parameter": [
+   {
+    "name": "spiel",
+    "label": "Mischung (Nummer)",
+    "typ": "zahl",
+    "min": 1,
+    "max": 99,
+    "standard": 1
+   }
+  ],
+  "thema": "Entwicklung",
+  "pfad": [
+   "LB 1",
+   "Entwicklung",
+   "Zuordnung"
+  ]
+ },
+ {
+  "id": "kurz-memory-entwicklung",
+  "titel": "Memory Entwicklung",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "Begriffe der Entwicklungspsychologie mit Erklärungen paaren.",
+  "datei": "memory.html?set=kurz-memory-entwicklung",
+  "ergebnis": true,
+  "parameter": [
+   {
+    "name": "spiel",
+    "label": "Mischung (Nummer)",
+    "typ": "zahl",
+    "min": 1,
+    "max": 99,
+    "standard": 1
+   }
+  ],
+  "thema": "Entwicklung",
+  "pfad": [
+   "LB 1",
+   "Entwicklung",
+   "Memory"
+  ]
+ },
+ {
+  "id": "kurz-blockfall-entwicklung",
+  "titel": "Blockfall Anlage, Umwelt, Selbststeuerung",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "Fälle und Aussagen den drei Entwicklungsbedingungen zuordnen.",
+  "datei": "blockfall.html?set=kurz-blockfall-entwicklung",
+  "ergebnis": true,
+  "parameter": [
+   {
+    "name": "spiel",
+    "label": "Mischung (Nummer)",
+    "typ": "zahl",
+    "min": 1,
+    "max": 99,
+    "standard": 1
+   }
+  ],
+  "thema": "Entwicklung",
+  "pfad": [
+   "LB 1",
+   "Entwicklung",
+   "Blockfall"
+  ]
+ },
+ {
+  "id": "kurz-vergleich-einfluesse",
+  "titel": "Theorievergleich Fördernde und hemmende Einflüsse",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "Erziehungseinflüsse auf die Entwicklung sortieren.",
+  "datei": "vergleich.html?set=kurz-vergleich-einfluesse",
+  "ergebnis": true,
+  "parameter": [
+   {
+    "name": "spiel",
+    "label": "Mischung (Nummer)",
+    "typ": "zahl",
+    "min": 1,
+    "max": 99,
+    "standard": 1
+   }
+  ],
+  "thema": "Entwicklung",
+  "pfad": [
+   "LB 1",
+   "Entwicklung",
+   "Theorievergleich"
+  ]
+ },
+ {
+  "id": "kurz-luecken-begriff",
+  "titel": "Lückentext Begriff Entwicklung",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "Die sechs Merkmale des Entwicklungsbegriffs ergänzen.",
+  "datei": "luecken.html?set=kurz-luecken-begriff",
+  "ergebnis": true,
+  "parameter": [
+   {
+    "name": "spiel",
+    "label": "Mischung (Nummer)",
+    "typ": "zahl",
+    "min": 1,
+    "max": 99,
+    "standard": 1
+   }
+  ],
+  "thema": "Entwicklung",
+  "pfad": [
+   "LB 1",
+   "Entwicklung",
+   "Lückentext"
+  ]
+ },
+ {
+  "id": "kurz-luecken-bedingungen",
+  "titel": "Lückentext Bedingungen der Entwicklung",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "Anlage, Umwelt, Selbststeuerung und ihr Zusammenwirken ergänzen.",
+  "datei": "luecken.html?set=kurz-luecken-bedingungen",
+  "ergebnis": true,
+  "parameter": [
+   {
+    "name": "spiel",
+    "label": "Mischung (Nummer)",
+    "typ": "zahl",
+    "min": 1,
+    "max": 99,
+    "standard": 1
+   }
+  ],
+  "thema": "Entwicklung",
+  "pfad": [
+   "LB 1",
+   "Entwicklung",
+   "Lückentext"
+  ]
+ },
+ {
+  "id": "kurz-kprim-entwicklung",
+  "titel": "K-Prim Entwicklungspsychologie",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "Vier Aufgaben mit je vier Aussagen: trifft zu oder nicht?",
+  "datei": "kprim.html?set=kurz-kprim-entwicklung",
+  "ergebnis": true,
+  "parameter": [],
+  "thema": "Entwicklung",
+  "pfad": [
+   "LB 1",
+   "Entwicklung",
+   "K-Prim"
   ]
  },
  {
@@ -552,7 +590,23 @@
   "thema": "Entwicklung",
   "pfad": [
    "LB 1",
-   "Entwicklung"
+   "Entwicklung",
+   "Begriffe-Tetris"
+  ]
+ },
+ {
+  "id": "kurz-rennen-entwicklung",
+  "titel": "Wichtel-Schubkarrenrennen Entwicklung",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "2 bis 8 Teams treten gleichzeitig an: Fachbegriffe und Fälle zu Entwicklung und Wirkbeziehungen.",
+  "datei": "rennen.html?set=kurz-rennen-entwicklung",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Entwicklung",
+  "pfad": [
+   "LB 1",
+   "Entwicklung",
+   "Wichtel-Schubkarrenrennen"
   ]
  },
  {
@@ -586,35 +640,8 @@
   "thema": "Alle Bereiche gemischt",
   "pfad": [
    "LB 1",
-   "Alle Bereiche gemischt"
-  ]
- },
- {
-  "id": "kurz-rennen-psychoanalyse",
-  "titel": "Wichtel-Schubkarrenrennen Psychoanalyse",
-  "fach": "Pädagogik/Psychologie",
-  "beschreibung": "2 bis 8 Teams treten gleichzeitig an: Bedeutung von Fachbegriffen und Fälle zur Psychoanalyse.",
-  "datei": "rennen.html?set=kurz-rennen-psychoanalyse",
-  "ergebnis": false,
-  "parameter": [],
-  "thema": "Psychoanalyse (Freud)",
-  "pfad": [
-   "LB 1",
-   "Psychoanalyse (Freud)"
-  ]
- },
- {
-  "id": "kurz-rennen-entwicklung",
-  "titel": "Wichtel-Schubkarrenrennen Entwicklung",
-  "fach": "Pädagogik/Psychologie",
-  "beschreibung": "2 bis 8 Teams treten gleichzeitig an: Fachbegriffe und Fälle zu Entwicklung und Wirkbeziehungen.",
-  "datei": "rennen.html?set=kurz-rennen-entwicklung",
-  "ergebnis": false,
-  "parameter": [],
-  "thema": "Entwicklung",
-  "pfad": [
-   "LB 1",
-   "Entwicklung"
+   "Alle Bereiche gemischt",
+   "Begriffe-Tetris"
   ]
  },
  {
@@ -628,7 +655,8 @@
   "thema": "Alle Bereiche gemischt",
   "pfad": [
    "LB 1",
-   "Alle Bereiche gemischt"
+   "Alle Bereiche gemischt",
+   "Wichtel-Schubkarrenrennen"
   ]
  }
 ]

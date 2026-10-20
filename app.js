@@ -5392,17 +5392,19 @@ async function ubKatalog(){
 }
 function ubPfad(e){return Array.isArray(e.pfad)&&e.pfad.length?e.pfad:[e.fach||"Übungen",e.thema||""].filter(Boolean);}
 function ubOptionen(kat,sel){
- const ordner=[...new Set(kat.flatMap(e=>{const p=ubPfad(e);return p.map((_,i)=>p.slice(0,i+1).join("/"));}))].sort((a,b)=>a.localeCompare(b,"de"));
+ const ordner=[...new Set(kat.flatMap(e=>{const p=ubPfad(e);return p.map((_,i)=>p.slice(0,i+1).join("/"));}))];
  const opt=(v,l)=>`<option value="${esc(v)}"${v===sel?" selected":""}>${esc(l)}</option>`;
  return`<optgroup label="Ganzer Ordner">${ordner.map(k=>opt("o:"+k,k.split("/").join(" › ")+" (alle Übungen)")).join("")}</optgroup>
-  <optgroup label="Einzelne Übung">${kat.map(e=>opt("s:"+e.id,ubPfad(e).join(" › ")+" · "+e.titel)).join("")}</optgroup>`;
+  <optgroup label="Einzelne Übung">${kat.map(e=>{const p=ubPfad(e),l=p[p.length-1],rest=e.titel.startsWith(l+" ")?e.titel.slice(l.length+1):e.titel;return opt("s:"+e.id,p.join(" › ")+" › "+rest)}).join("")}</optgroup>`;
 }
 function ubZielName(z,kat){
  if(!z)return"";
+ if(z==="u:blockfall")return"Blockfall aus den Lehrtexten";
  if(z.startsWith("o:"))return z.slice(2).split("/").join(" › ");
  const e=(kat||[]).find(x=>"s:"+x.id===z);return e?e.titel:"";
 }
 function ubUrl(z){
+ if(z==="u:blockfall")return"blockfall/blockfall.html";
  if(String(z||"").startsWith("s:"))return"uebungsbausteine/station.html?s="+encodeURIComponent(z.slice(2).replace(/[^A-Za-z0-9_-]/g,""));
  if(String(z||"").startsWith("o:"))return"uebungsbausteine/index.html?ordner="+encodeURIComponent(z.slice(2));
  return"uebungsbausteine/index.html";
