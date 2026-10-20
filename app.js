@@ -1,4 +1,4 @@
-let writeBatch, initializeApp, getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, updateProfile, deleteUser; let getFirestore, collection, doc, addDoc, setDoc, updateDoc, deleteDoc, getDoc, getDocs, query, orderBy, limit, where, onSnapshot, serverTimestamp, arrayUnion, arrayRemove, increment; let getStorage, storageRef, uploadBytes, getDownloadURL, deleteObject; let storage=null; let firebaseReadyPromise = null; async function loadFirebase(){ if(firebaseReadyPromise) return firebaseReadyPromise; firebaseReadyPromise = import("./firebase-local.js?v=20261016a").then((fbMod)=>{ const appMod=fbMod, authMod=fbMod, fsMod=fbMod, storageMod={getStorage:fbMod.getStorage,ref:fbMod.ref,uploadBytes:fbMod.uploadBytes,getDownloadURL:fbMod.getDownloadURL,deleteObject:fbMod.deleteObject}; ({initializeApp}=appMod); ({getAuth,onAuthStateChanged,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,sendPasswordResetEmail,updateProfile,deleteUser}=authMod); ({getFirestore,collection,doc,addDoc,setDoc,updateDoc,deleteDoc,getDoc,getDocs,query,orderBy,limit,where,onSnapshot,serverTimestamp,arrayUnion,arrayRemove,increment,writeBatch}=fsMod); ({getStorage,ref:storageRef,uploadBytes,getDownloadURL,deleteObject}=storageMod); if(!app) app=initializeApp(firebaseConfig); if(!auth) auth=getAuth(app); if(!db){ try{ db=fbMod.initializeFirestore(app,{experimentalAutoDetectLongPolling:true}); }catch(e){ console.warn("Firestore-Start mit Verbindungsfallback nicht möglich, Standard wird genutzt:",e); db=getFirestore(app); } } if(!storage) storage=getStorage(app); window.CampusFirebase={ get db(){return db}, get currentUser(){return currentUser}, collection,doc,addDoc,setDoc,updateDoc,deleteDoc,getDoc,getDocs, query,orderBy,limit,where,onSnapshot,serverTimestamp,arrayUnion,increment, modal,toast,pageHead,footer,render }; return true; }); return firebaseReadyPromise; } /*
+let writeBatch, initializeApp, getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, updateProfile, deleteUser; let getFirestore, collection, doc, addDoc, setDoc, updateDoc, deleteDoc, getDoc, getDocs, query, orderBy, limit, where, onSnapshot, serverTimestamp, arrayUnion, arrayRemove, increment; let getStorage, storageRef, uploadBytes, getDownloadURL, deleteObject; let storage=null; let firebaseReadyPromise = null; async function loadFirebase(){ if(firebaseReadyPromise) return firebaseReadyPromise; firebaseReadyPromise = import("./firebase-local.js?v=20261010b").then((fbMod)=>{ const appMod=fbMod, authMod=fbMod, fsMod=fbMod, storageMod={getStorage:fbMod.getStorage,ref:fbMod.ref,uploadBytes:fbMod.uploadBytes,getDownloadURL:fbMod.getDownloadURL,deleteObject:fbMod.deleteObject}; ({initializeApp}=appMod); ({getAuth,onAuthStateChanged,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,sendPasswordResetEmail,updateProfile,deleteUser}=authMod); ({getFirestore,collection,doc,addDoc,setDoc,updateDoc,deleteDoc,getDoc,getDocs,query,orderBy,limit,where,onSnapshot,serverTimestamp,arrayUnion,arrayRemove,increment,writeBatch}=fsMod); ({getStorage,ref:storageRef,uploadBytes,getDownloadURL,deleteObject}=storageMod); if(!app) app=initializeApp(firebaseConfig); if(!auth) auth=getAuth(app); if(!db) db=getFirestore(app); if(!storage) storage=getStorage(app); window.CampusFirebase={ get db(){return db}, get currentUser(){return currentUser}, collection,doc,addDoc,setDoc,updateDoc,deleteDoc,getDoc,getDocs, query,orderBy,limit,where,onSnapshot,serverTimestamp,arrayUnion,increment, modal,toast,pageHead,footer,render }; return true; }); return firebaseReadyPromise; } /*
  WICHTIG:
  Diese Werte werden nach dem Anlegen deiner Firebase-Web-App aus
  der Firebase Console hier eingesetzt.
@@ -4703,7 +4703,7 @@ Object.assign(window,{pp12Tafel,pp12KompassDrucken});
 // Gleiche Oberflächen wie im Modulplan der F11Sb, hier je Schulwoche unter den Unterrichtsstunden (Plus-Zeichen).
 // Sammlungen in Firestore: ppModule, ppStundenAntworten, ppKursFortschritt.
 // ============================================================
-const PPM_ZUSATZ=["apt","selbstlern","kprim","rallye","blockfall"];
+const PPM_ZUSATZ=["apt","selbstlern","kprim","rallye"];
 // Schulwochen der 12. Klasse (Montag als ID). Wochen, die ganz in den Ferien liegen, entfallen.
 const SCHULWOCHEN_12=(()=>{
  const out=[],letzter=PP12_PLAN[PP12_PLAN.length-1].d;
@@ -4722,8 +4722,7 @@ const PPM_TYPEN={
  kprim:{icon:"🏁",name:"Check-Out-Wochentest",kurz:"Check-Out",art:"Check-Out-Wochentest",text:"Wochentest mit 2 Fallvignetten und 4 K-Prim-Aufgaben (16 BE), automatisch ausgewertet."},
  selbstlern:{icon:"🎒",name:"Selbstlernkurs",kurz:"Selbstlernkurs",art:"Selbstlernkurs",text:"Schüler:innen bearbeiten den Kurs selbstständig von A bis Z."},
  experiment:{icon:"🧪",name:"Experiment (interaktive Einheit)",kurz:"Experiment",art:"Experiment",text:"„Das Experiment“ als interaktive Einheit. Du wählst selbst, welche Teile dabei sind."},
- rallye:{icon:"🚩",name:"Lernrallye",kurz:"Lernrallye",art:"Lernrallye",text:"Stationen mit Aufgaben, per QR-Code oder der Reihe nach, einzeln oder in Teams, mit Punkten und Rangliste."},
- blockfall:{icon:"🧱",name:"Blockfall (Lernspiel)",kurz:"Blockfall",art:"Lernspiel",text:"Tetris-Lernspiel: Mit jeder vollen Reihe wird ein Begriff oder eine Definition abgefragt. Die Fragen stammen aus den Lehrtexten."}
+ rallye:{icon:"🚩",name:"Lernrallye",kurz:"Lernrallye",art:"Lernrallye",text:"Stationen mit Aufgaben, per QR-Code oder der Reihe nach, einzeln oder in Teams, mit Punkten und Rangliste."}
 };
 const PPM_EINHEITEN={experiment:{icon:"🧪",name:"Das Experiment – interaktive Stunde",text:"Kaugummi-Versuch in Kleingruppen, Klassenvergleich, Merkmale eines Experiments und Abschlussquiz."}};
 // Dauer eines Moduls: eine Unterrichtsstunde (45 Min.), Doppelstunde, 120 oder 180 Minuten,
@@ -4742,7 +4741,7 @@ const PPM_DAUERN=[
 // Pro Schulwoche stehen 6,3 Unterrichtsstunden zu je 45 Minuten (285 Minuten) zur Verfügung. Wochen mit Praktikum (fpA-Blöcke)
 // und Ferien sind gesperrt. Eine ganze Woche (1 bis 3 Wochen) belegt die Woche vollständig.
 const PPM_STD_PRO_WOCHE="6,3",PPM_MIN_PRO_STUNDE=45,PPM_MIN_PRO_WOCHE=285; // 6 Stunden + 15 Minuten (z. B. K-Prim-Test) = 285 Minuten = 6,3 Stunden
-const PPM_DAUER_STANDARD={projekt:"90",stunde:"90",experiment:"90",apt:"90",kprim:"45",selbstlern:"90",rallye:"90",blockfall:"45"};
+const PPM_DAUER_STANDARD={projekt:"90",stunde:"90",experiment:"90",apt:"90",kprim:"45",selbstlern:"90",rallye:"90"};
 function ppmDauerKey(m){
  if(m&&PPM_DAUERN.some(d=>d.k===m.dauer))return m.dauer;
  const n=Math.max(1,Number(m&&m.wochen)||1);
@@ -5041,18 +5040,6 @@ body.ppm-dnd-an{cursor:grabbing;-webkit-user-select:none;user-select:none}
 .ppm-leer{color:var(--muted);font-size:13px;align-self:center}
 .ppm-box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:0 0 14px}.ppm-box h2{margin:0 0 8px;font-size:18px}.ppm-box h3{margin:12px 0 4px;font-size:15px}.ppm-box p{margin:6px 0;line-height:1.5}
 .ppm-kopf{border-left:6px solid var(--c);}
-/* ---- Farbbalance: jeder Bereich hat seine eigene ruhige Akzentfarbe ---- */
-.ppm-sek{--s:#2f79b7;border-left:6px solid var(--s);border-color:color-mix(in srgb,var(--s) 28%,#fff);border-left-color:var(--s);background:color-mix(in srgb,var(--s) 6%,#fff)}
-.ppm-sek>h2,.ppm-sek>summary{color:color-mix(in srgb,var(--s) 85%,#000)}
-.ppm-sek .ppm-btn.primaer{background:var(--s);border-color:var(--s)}
-.ppm-sek .ppm-bar i{background:var(--s)}
-.ppm-sek.s-faden{--s:#7b5ea7}.ppm-sek.s-material{--s:#c98318}.ppm-sek.s-lernen{--s:#2f79b7}
-.ppm-sek.s-pruefen{--s:#1f9a8a}.ppm-sek.s-team{--s:#c25a7c}.ppm-sek.s-lehrer{--s:#6b7c93}.ppm-sek.s-warn{--s:#c4513f}
-.ppm-kopf{background:color-mix(in srgb,var(--c) 9%,#fff);border-color:color-mix(in srgb,var(--c) 30%,#fff);border-left-color:var(--c)}
-.ppm-kopf h1{color:#1d2b3a}
-.ppm-sek .lb-pill{background:#fff}
-.ppm-sek.s-faden .lb-pill.da{background:var(--s);border-color:var(--s)}
-
 .ppm-zeile{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:8px 0;border-bottom:1px solid var(--line)}.ppm-zeile:last-child{border:0}
 .ppm-btn{display:inline-flex;align-items:center;gap:6px;min-height:42px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:700;font-size:13px;color:var(--ink);cursor:pointer;text-decoration:none}
 .ppm-btn.primaer{background:#2f7fc6;border-color:#2f7fc6;color:#fff}.ppm-btn.klein{min-height:34px;padding:0 10px;font-size:12px}
@@ -5187,7 +5174,6 @@ async function ppmDialog(id,typ,woche,opt){
  let checkouts=[];
  if(t==="kprim"){try{checkouts=(await ladeCheckoutDaten()).checkouts||[];}catch(e){}}
  const ea=t==="selbstlern"?await ppmEaListe():[];
- const bfT=t==="blockfall"?await ppmBlockfallThemen():[];
  const lb0=bearb?bearb.lb:(projekt?projekt.lb:1);
  const lbOpt=[1,2,3,4].map(n=>`<option value="${n}"${n===lb0?" selected":""}>Lernbereich ${n} · ${esc((PP12_LB[n]||{}).titel||"")}</option>`).join("");
  const ph0=PROJEKT_PHASEN.find(p=>p.lbNum===lb0);
@@ -5218,12 +5204,6 @@ async function ppmDialog(id,typ,woche,opt){
    ${PPM_EXP_TEILE.map(tl=>`<label class="check"><input type="checkbox" class="ppmTeil" value="${tl.k}"${gew.includes(tl.k)?" checked":""}><span><b>${esc(tl.name)}</b> <small>(ca. ${tl.min} Min.)</small><br><small style="color:var(--muted)">${esc(tl.text)}</small></span></label>`).join("")}
    <div id="ppmTeileInfo" class="ppm-teileinfo"></div></div>
    ${projekt?`<p style="font-size:13px;color:var(--muted);margin:0">Diese Einheit gehört zum Projekt „${esc(projekt.titel)}“ und zählt zur Projektzeit.</p>`:""}`;
- }
- if(t==="blockfall"){
-  const gew=bearb&&Array.isArray(bearb.themen)&&bearb.themen.length?bearb.themen:bfT.map(x=>x.id);
-  extra=`<div class="ppm-teile"><b style="font-size:13px">Themenpakete im Spiel</b>
-   ${bfT.length?bfT.map(x=>`<label class="check"><input type="checkbox" class="ppmBfTh" value="${esc(x.id)}"${gew.includes(x.id)?" checked":""}><span><b>${esc(x.titel)}</b> <small>(${x.n} Karten)</small></span></label>`).join(""):`<p style="color:#b3261e;font-size:13px;margin:0">Die Datei blockfall/aufgaben.json wurde nicht gefunden.</p>`}</div>
-   <p style="font-size:13px;color:var(--muted);margin:0">Mit jeder vollen Reihe stellt das Spiel eine Frage zu einem Begriff oder einer Definition. Die Fragen liegen in der Datei blockfall/aufgaben.json.</p>`;
  }
  if(t==="selbstlern"){
   const alt=bearb&&bearb.kursId==="psych-gegenstand";
@@ -5308,7 +5288,7 @@ async function ppmDialog(id,typ,woche,opt){
   if(!pr.ok){toast("In dieser Woche ist nicht genug Platz (6,3 Unterrichtsstunden pro Woche).");return;}
   const dk=$("ppmDauer").value,def=PPM_DAUERN.find(d=>d.k===dk);
   const daten={modul:t,lb,titel:ti.value.trim(),start:$("ppmStart").value,dauer:dk,wochen:def?def.wochen:(Number(dk.slice(1))||1),notiz:$("ppmNotiz").value.trim()};
-  if(!daten.titel){const x=PROJEKT_PHASEN.find(y=>y.lbNum===lb);daten.titel=t==="projekt"&&x?x.titel:(t==="apt"?"Prüfungstraining · LB"+lb:t==="kprim"?"K-Prim-Aufgabensatz · LB"+lb:t==="stunde"?"Deeper-Learning-Einheit · LB"+lb:t==="experiment"?"Das Experiment":t==="rallye"?"Lernrallye · LB"+lb:t==="blockfall"?"Blockfall":"Selbstlernkurs · LB"+lb);}
+  if(!daten.titel){const x=PROJEKT_PHASEN.find(y=>y.lbNum===lb);daten.titel=t==="projekt"&&x?x.titel:(t==="apt"?"Prüfungstraining · LB"+lb:t==="kprim"?"K-Prim-Aufgabensatz · LB"+lb:t==="stunde"?"Deeper-Learning-Einheit · LB"+lb:t==="experiment"?"Das Experiment":t==="rallye"?"Lernrallye · LB"+lb:"Selbstlernkurs · LB"+lb);}
   if(projektId)daten.projektId=projektId;
   if(t==="projekt"&&$("ppmDirekt"))daten.direkt=$("ppmDirekt").value;
   if(t==="stunde")daten.phase=Number($("ppmPhase").value);
@@ -5319,11 +5299,6 @@ async function ppmDialog(id,typ,woche,opt){
    if(def&&def.min&&min>def.min&&!confirm(`Die gewählten Teile brauchen etwa ${min} Minuten, eingeplant sind ${def.min}. Trotzdem speichern?`))return;
   }
   if(t==="rallye"){daten.rModus=$("ppmRModus").value;daten.rFreischaltung=$("ppmRFrei").value;}
-  if(t==="blockfall"){
-   const th=[...document.querySelectorAll(".ppmBfTh")].filter(c=>c.checked).map(c=>c.value);
-   if(bfT.length&&!th.length){toast("Bitte mindestens ein Themenpaket wählen.");return;}
-   daten.themen=th.length===bfT.length?[]:th;   // leer = alle Themenpakete
-  }
   if(t==="selbstlern"){
    daten.kursId=$("ppmKurs").value;
    if(!ti.value.trim()){
@@ -5384,30 +5359,11 @@ async function ppmStandardplan(){
  }catch(e){ppmFehler(e,"Plan konnte nicht angelegt werden");}
 }
 // ------------------------------------------------------------ Modulseiten
-
-// Farbbalance: ordnet jedem Bereich einer Modulseite eine Akzentfarbe zu
-function ppmSekFarben(h){
- if(!h||typeof h!=="string")return h;
- const k=t=>{t=t.toLowerCase();
-  if(/lehrkraft|name der stunde/.test(t))return"s-lehrer";
-  if(/datenschutz/.test(t))return"s-warn";
-  if(/^material/.test(t))return"s-material";
-  if(/check-?out|k-prim|wo stehe|dein stand|zeitstruktur|zeitplan|rangliste|checkliste|bewertet/.test(t))return"s-pruefen";
-  if(/team|wer macht|messe/.test(t))return"s-team";
-  return"s-lernen";};
- h=h.replace(/<div class="lb-leiste-x"/g,'<div');
- h=h.replace(/<div class="ppm-box lb-leiste"/g,'<div class="ppm-box ppm-sek s-faden lb-leiste"');
- h=h.replace(/<div class="ppm-box((?: [a-z-]+)*)">\s*<h2>([^<]*)/g,(a,c,t)=>`<div class="ppm-box ppm-sek ${k(t)}${c}"><h2>${t}`);
- h=h.replace(/<details class="ppm-box ppm-details"([^>]*)><summary>([^<]*)/g,(a,o,t)=>`<details class="ppm-box ppm-details ppm-sek ${k(t)}"${o}><summary>${t}`);
- return h;
-}
-async function ppmModulSeite(m){return ppmSekFarben(await ppmModulSeiteRoh(m));}
-async function ppmModulSeiteRoh(m){
+async function ppmModulSeite(m){
  await ppmMeineLaden();
  if(m.modul==="projekt")return await ppmProjektSeite(m);
  if(m.modul==="stunde")return await ppmStundeSeite(m);
  if(m.modul==="rallye")return await ppmRallyeSeite(m);
- if(m.modul==="blockfall")return await ppmBlockfallSeite(m);
  if(m.modul==="kprim")return await ppmKprimSeite(m);
  if(m.modul==="apt")return await ppmAptSeite(m);
  if(m.modul==="experiment")return await ppmExperimentSeite(m);
@@ -5416,34 +5372,6 @@ async function ppmModulSeiteRoh(m){
   return await ppmKursSeite(m);
  }
  return"";
-}
-// ---- Blockfall (Lernspiel: Tetris mit Fragen zu Begriffen und Definitionen) ----
-// Spiel: blockfall/blockfall.html, Fragen: blockfall/aufgaben.json (Themenpakete mit Begriff und Definition).
-let PPM_BF_CACHE=null;
-async function ppmBlockfallThemen(){
- if(PPM_BF_CACHE)return PPM_BF_CACHE;
- try{
-  const r=await fetch("blockfall/aufgaben.json?v="+Date.now());
-  if(!r.ok)throw new Error(r.status);
-  const j=await r.json();
-  PPM_BF_CACHE=(j.themen||[]).map(t=>({id:t.id,titel:t.titel,n:(t.karten||[]).length,lb:t.lb||""}));
- }catch(e){console.error("Blockfall-Aufgaben:",e);return[];}
- return PPM_BF_CACHE;
-}
-async function ppmBlockfallSeite(m){
- const lehrer=isTeacher(),th=await ppmBlockfallThemen();
- const auswahl=Array.isArray(m.themen)&&m.themen.length?m.themen:null;
- const gew=auswahl?th.filter(t=>auswahl.includes(t.id)):th;
- const n=gew.reduce((s,t)=>s+t.n,0);
- const url="blockfall/blockfall.html"+(auswahl?"?themen="+encodeURIComponent(auswahl.join(",")):"");
- const liste=gew.map(t=>`<div class="ppm-zeile"><div style="flex:1;min-width:200px"><b>${esc(t.titel)}</b></div><small>${t.n} Karten</small></div>`).join("");
- return`${ppmKopf(m,"")}
- <div class="ppm-box"><h2>Blockfall</h2>
-  <p>Du spielst Tetris. Sobald eine Reihe voll ist, hält das Spiel an und fragt dich einen Begriff oder eine Definition ab, für jede Reihe eine Frage. Richtige Antworten bringen Punkte. Falsche Karten kommen später noch einmal und stehen am Ende in deiner Wiederholungsliste.</p>
-  ${gew.length?`<p><b>${n} Karten</b> in ${gew.length} Themenpaket${gew.length===1?"":"en"}:</p>${liste}`:`<p class="ppm-leer">Die Aufgaben wurden nicht gefunden. Es fehlt die Datei <code>blockfall/aufgaben.json</code> im Repo.</p>`}
-  <div style="margin-top:12px"><a class="ppm-btn primaer" href="${esc(url)}" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">${lehrer?"Spiel öffnen (Vorschau)":"Blockfall starten"}</a></div>
-  ${lehrer?`<p style="font-size:13px;color:var(--muted);margin:10px 0 0">Neue Fragen ergänzt du in der Datei blockfall/aufgaben.json (Anleitung in blockfall/README.md). Welche Themenpakete im Spiel vorkommen, stellst du über „Modul bearbeiten“ ein.</p>`:""}</div>
- ${footer()}`;
 }
 // ---- Experiment (interaktive Einheit mit wählbaren Teilen) ----
 async function ppmExperimentSeite(m){
@@ -6963,7 +6891,7 @@ function lrLehrerHTML(m){
    <button type="button" class="ppm-btn" data-lr="auswertung">📊 Auswertung</button>${frei==="qr"?`<button type="button" class="ppm-btn" data-lr="qr-druck">🖨 QR-Codes drucken</button>`:""}</div>
   <p style="color:var(--muted);font-size:13px;margin:8px 0 0">Freischaltung: ${esc(LR_FREISCHALTUNG[frei])}. Einstellungen änderst du über „Modul bearbeiten“. Schüler:innen sehen die Rallye erst, wenn du sie startest.</p></div>
  <div class="ppm-box"><h2>Stationen</h2>${zeilen||`<p class="ppm-leer">Noch keine Station. Lege die erste an.</p>`}
-  <div class="ppm-zeile" style="border:0"><button type="button" class="ppm-btn primaer" data-lr="st-neu">＋ Station hinzufügen</button><button type="button" class="ppm-btn" data-lr="st-vorlage">📥 Stationen aus Vorlage laden</button></div></div>`;
+  <div class="ppm-zeile" style="border:0"><button type="button" class="ppm-btn primaer" data-lr="st-neu">＋ Station hinzufügen</button></div></div>`;
 }
 async function lrStationenSpeichern(m,liste){
  try{await updateDoc(doc(db,"ppModule",m.id),{stationen:liste,updatedAt:serverTimestamp()});await ppmLaden(true);await render();}
@@ -7148,50 +7076,6 @@ async function lrCodeEinloesen(m,stand,codeRoh){
   await render();
  }catch(e){ppmFehler(e,"Station konnte nicht freigeschaltet werden");}
 }
-// ---- Vorlagen: Stationen aus der Datei lernrallye/vorlagen.json laden (Lehrkraft) ----
-let LR_VORLAGEN=[];
-function lrPunkteListe(l){return(l||[]).reduce((n,x)=>n+(Number(x.punkte)||0),0);}
-async function lrVorlageDialog(m){
- let liste=[];
- try{
-  const r=await fetch("lernrallye/vorlagen.json?v="+Date.now());
-  if(!r.ok)throw new Error("HTTP "+r.status);
-  const j=await r.json();liste=Array.isArray(j.vorlagen)?j.vorlagen:[];
- }catch(e){console.error("Rallye-Vorlagen:",e);toast("Die Datei lernrallye/vorlagen.json wurde nicht gefunden.");return;}
- LR_VORLAGEN=liste;
- const hat=(m.stationen||[]).length>0;
- modal(`${LR_CSS}<button class="modal-close" onclick="closeModal()">×</button><div class="kicker">🚩 LERNRALLYE</div><h2>Stationen aus Vorlage laden</h2>
-  <div class="lr-form"><p style="color:var(--muted);font-size:13px;margin:0 0 8px">Die Stationen kommen aus der Datei lernrallye/vorlagen.json. Sie erhalten neue Codes und lassen sich danach wie gewohnt bearbeiten.</p>
-  <label style="display:flex;gap:8px;align-items:center;margin:0 0 10px"><input type="checkbox" id="lrVEinst" checked style="width:auto"> Titel und Einstellungen der Vorlage übernehmen (Teams, Freischaltung)</label>
-  ${liste.map((v,i)=>`<div class="lr-st"><div style="flex:1;min-width:180px"><b>${esc(v.titel||"Vorlage")}</b><br><small>${esc(v.unter||"")}${v.unter?" · ":""}${(v.stationen||[]).length} Stationen · ${lrPunkteListe(v.stationen)} Punkte</small></div>
-   <button type="button" class="ppm-btn klein primaer" data-lr="vorlage" data-i="${i}" data-wie="neu">${hat?"Ersetzen":"Laden"}</button>${hat?`<button type="button" class="ppm-btn klein" data-lr="vorlage" data-i="${i}" data-wie="plus">Anhängen</button>`:""}</div>`).join("")||`<p class="ppm-leer">Die Datei enthält keine Vorlagen.</p>`}
-  <div class="form-actions"><button class="secondary" type="button" onclick="closeModal()">Schließen</button></div></div>`);
-}
-async function lrVorlageAnlegen(m,i,anhaengen){
- const v=LR_VORLAGEN[i];if(!v||!Array.isArray(v.stationen))return;
- if(!anhaengen&&(m.stationen||[]).length&&!confirm("Die vorhandenen Stationen dieser Rallye werden ersetzt. Bereits gesammelte Punkte bleiben in der Rangliste stehen. Fortfahren?"))return;
- const liste=anhaengen?[...(m.stationen||[])]:[];
- const tmp={stationen:liste},stamp=Date.now().toString(36);
- v.stationen.forEach((s,k)=>{
-  const st=JSON.parse(JSON.stringify(s));
-  st.id="s"+stamp+k.toString(36)+Math.floor(Math.random()*1296).toString(36);
-  st.punkte=Math.max(0,Math.min(100,Number(st.punkte)||0));
-  st.text=st.text||"";st.frage=st.frage||"";st.erklaerung=st.erklaerung||"";
-  st.optionen=st.optionen||[];st.aussagen=st.aussagen||[];st.antworten=st.antworten||[];st.paare=st.paare||[];
-  st.richtig=Number(st.richtig)||0;
-  st.code=lrCodeNeu(tmp);
-  liste.push(st);
- });
- const daten={stationen:liste,updatedAt:serverTimestamp()};
- if($("lrVEinst")&&$("lrVEinst").checked){
-  if(v.titel)daten.titel=v.titel;
-  if(v.rModus)daten.rModus=v.rModus;
-  if(v.rFreischaltung)daten.rFreischaltung=v.rFreischaltung;
- }
- await updateDoc(doc(db,"ppModule",m.id),daten);
- LR.sicht=null;closeModal();await ppmLaden(true);await render();
- toast(`${v.stationen.length} Stationen ${anhaengen?"angehängt":"geladen"}.`);
-}
 // ---- Klicks der Lernrallye ----
 async function lrKlick(e){
  const b=e.target.closest&&e.target.closest("[data-lr]");
@@ -7234,8 +7118,6 @@ async function lrKlick(e){
   if(!lehrer)return;
   if(a==="aktiv"){await updateDoc(doc(db,"ppModule",m.id),{rAktiv:!m.rAktiv,updatedAt:serverTimestamp()});await ppmLaden(true);await render();toast(m.rAktiv?"Die Rallye ist beendet.":"Die Rallye läuft.");return;}
   if(a==="st-neu"){lrStationDialog(m,null);return;}
-  if(a==="st-vorlage"){await lrVorlageDialog(m);return;}
-  if(a==="vorlage"){await lrVorlageAnlegen(m,Number(b.dataset.i),b.dataset.wie==="plus");return;}
   if(a==="st-edit"){lrStationDialog(m,b.dataset.sid);return;}
   if(a==="st-weg"){
    const st=lrStation(m,b.dataset.sid);if(!st)return;
@@ -10594,6 +10476,11 @@ window.qrLoeschen=qrLoeschen;window.qrErzeugen=qrErzeugen;window.qrHerunterladen
 
 async function renderLernwerkstatt(){
  const groups=[
+ ...(isTeacher()?[{title:"Unterrichtswerkzeuge",sub:"Nur für Lehrkräfte – für den Einsatz im Unterricht.",color:"#c0504d",items:[
+ [" ","Theorie-Duell 12. Klasse","Zwei Teams, ein Fall: Theorien der 12. Klasse erkennen und Begriffe zuordnen – Beamer-Spiel.","theorie-duell"],
+ [" ","Theorie-Duell 11. Klasse","20 Fälle zu Wissenschaft, Erziehung, Wahrnehmung, Gedächtnis, Emotion, Motivation und Lernen (LehrplanPLUS FOS 11).","theorie-duell-11"],
+ [" ","Theorie-Duell Lerntheorien & Menschenbild","15 Fälle: klassisches und operantes Konditionieren, Bandura, Psychoanalyse und personenzentrierte Theorie (Grundlagen).","theorie-duell-lern"]
+ ]}]:[]),
  {title:"Mein Lernen planen und verstehen",sub:"Ich will mein Lernen in die Hand nehmen.",color:"#4a90d9",items:[
  [" ","Persönlicher Lernpfad","Ziele setzen, Lernschritte planen und Fortschritt erkennen.","lernpfad"],
  [" ","Lernstrategien-Check","Kein Lerntyp-Test – dein Strategien-Profil in 25 Fragen.","lernstrategien"],
@@ -10603,6 +10490,7 @@ async function renderLernwerkstatt(){
  {title:"Üben und festigen",sub:"Ich will üben und mich auf Prüfungen vorbereiten.",color:"#3fa66a",items:[
  [" ","Fachaufsatz-Training","Fachaufsatz Pädagogik/Psychologie an echten Prüfungsaufgaben üben.","fachaufsatz"],
  [" ","Zuordnungsübungen","Begriff und Erklärung zuordnen, per Knopfdruck selbst überprüfen.","zuordnung"],
+ [" ","Vorbereitung auf die Kurzarbeit","22 interaktive Übungen zu Psychoanalyse und Entwicklung: Memory, Blockfall, Theorievergleich, Tafelbild ergänzen, Zuordnung, K-Prim.","kurzarbeit"],
  [" ","Lern-Werkzeuge","Karteikarten, Fokus-Timer und Glossar zum selbstständigen Lernen.","lernwerkzeuge"],
  [" ","Uhr & Timer","Aktuelle Uhrzeit im Blick, plus frei einstellbarer Timer für alle.","uhr-timer"]
  ]},
@@ -14940,6 +14828,23 @@ function resetSimpleTimer(){
  const btn=$("simpleTimerStartBtn");if(btn)btn.textContent="Start";
 }
 window.startSimpleTimer=startSimpleTimer;window.pauseSimpleTimer=pauseSimpleTimer;window.resetSimpleTimer=resetSimpleTimer;
+function theorieDuellSeite(klasse,datei,titel,sub){titel=titel||"Theorie-Duell "+klasse+". Klasse";sub=sub||"Zwei Teams, ein Fall: Theorien aus dem LehrplanPLUS FOS "+klasse+" erkennen und Begriffe zuordnen.";
+ if(!isTeacher())return`${pageHead("UNTERRICHTSWERKZEUGE","Theorie-Duell "+klasse,"Dieser Bereich ist nur für Lehrkräfte.",`<button class="secondary"onclick="go('lernwerkstatt')">← Lernwerkstatt</button>`)}${footer()}`;
+ return`${pageHead("UNTERRICHTSWERKZEUGE",titel,sub,`<button class="secondary"onclick="go('lernwerkstatt')">← Lernwerkstatt</button> <a class="primary"href="tools/${datei}"target="_blank"rel="noopener"style="text-decoration:none">Vollbild im neuen Tab ↗</a>`)}
+ <div class="card"style="margin-bottom:12px"><small style="color:var(--muted)">Steuerung: Leertaste/→ weiter, ← zurück, F Vollbild. Läuft komplett im Browser – es werden keine Daten gespeichert oder übertragen. Für den Beamer am besten „Vollbild im neuen Tab“ öffnen.</small></div>
+ <iframe src="tools/${datei}"title="Theorie-Duell ${klasse}"style="width:100%;height:78vh;border:1px solid var(--line,#ddd);border-radius:12px;background:#fff"allow="fullscreen"></iframe>
+ ${footer()}`;
+}
+function renderKurzarbeit(){
+ return`${pageHead("ÜBEN UND FESTIGEN","Vorbereitung auf die Kurzarbeit","Interaktive Übungen zu den Tafelbildern: Psychoanalyse und Entwicklung.",`<button class="secondary"onclick="go('lernwerkstatt')">← Lernwerkstatt</button> <a class="primary"href="tools/kurzarbeit/index.html"target="_blank"rel="noopener"style="text-decoration:none">Im neuen Tab öffnen ↗</a>`)}
+ <div class="card"style="margin-bottom:12px"><small style="color:var(--muted)">Tippe eine Übung an, sie startet sofort. Läuft komplett im Browser: Es werden keine Daten gespeichert oder übertragen.</small></div>
+ <iframe src="tools/kurzarbeit/index.html?lokal=1"title="Vorbereitung auf die Kurzarbeit"style="width:100%;height:80vh;border:1px solid var(--line,#ddd);border-radius:12px;background:#fff"allow="fullscreen"></iframe>
+ ${footer()}`;
+}
+function renderTheorieDuell(){return theorieDuellSeite("12","theorie-duell-beamer.html")}
+function renderTheorieDuellLern(){return theorieDuellSeite("11","theorie-duell-11-lerntheorien-beamer.html","Theorie-Duell Lerntheorien & Menschenbild","Klassisches und operantes Konditionieren, Bandura, Psychoanalyse und personenzentrierte Theorie: Grundlagen im Zweikampf.")}
+function renderTheorieDuell11(){return theorieDuellSeite("11","theorie-duell-11-beamer.html")}
+window.renderTheorieDuell=renderTheorieDuell;window.renderTheorieDuell11=renderTheorieDuell11;window.renderTheorieDuellLern=renderTheorieDuellLern;
 function renderUhrTimer(){
  ensureGlobalClock();
  return`${pageHead("SELBSTSTÄNDIG LERNEN","Uhr & Timer","Aktuelle Uhrzeit im Blick behalten oder einen frei einstellbaren Timer starten.",`<button class="secondary"onclick="go('lernwerkstatt')">← Lernwerkstatt</button>`)}
@@ -20083,7 +19988,7 @@ async function render(){
  zufallspicker:renderZufallspicker,
  lernwerkzeuge:renderLernWerkzeuge,
  zuordnung:renderZuordnungUebersicht,"zuordnung-board":renderZuordnungBoard,
- karteikarten:renderKarteikartenUebersicht,"karteikarten-board":renderKarteikartenBoard,"fokus-timer":renderFokusTimer,"uhr-timer":renderUhrTimer,"qr-code":renderQrCode,
+ karteikarten:renderKarteikartenUebersicht,"karteikarten-board":renderKarteikartenBoard,"fokus-timer":renderFokusTimer,"uhr-timer":renderUhrTimer,"kurzarbeit":renderKurzarbeit,"theorie-duell":renderTheorieDuell,"theorie-duell-11":renderTheorieDuell11,"theorie-duell-lern":renderTheorieDuellLern,"qr-code":renderQrCode,
  glossar:renderGlossar,
  fachaufsatz:renderFachaufsatzUebersicht,"fachaufsatz-board":renderFachaufsatzBoard,
  projekte:renderProjekte,kompetenz:renderKompetenz,journal:renderLernjournalRoute,
