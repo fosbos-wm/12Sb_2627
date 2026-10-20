@@ -38,3 +38,7 @@ Als Admin in der Datenschutzerklärung: **Schuljahresende: Klasse löschen**. Da
 
 ## 7. Inhalte aus dem alten Projekt (optional)
 Siehe Export/Import mit `gcloud firestore export/import`. Schülerdaten nicht mitnehmen.
+
+## Vertiefungs- / Übungsbausteine (Modulart „Übungsbaustein“)
+
+Die interaktiven Übungen liegen im Ordner `uebungsbausteine/` (früher `tools/kurzarbeit/`, der alte Ordner und die Kachel „Übungen zu LB 1“ entfallen). Die Lehrkraft schaltet sie im Unterrichtsplan frei: **＋ Modul → Vertiefungs- / Übungsbaustein**, dann einen ganzen Ordner (z. B. „LB 1 › Psychoanalyse“) oder eine einzelne Übung wählen, Woche und Dauer festlegen. Schüler:innen sehen den Baustein erst, wenn er im Plan steht, öffnen ihn auf der Modulseite und können ihn selbst als erledigt markieren (Haken nur im Browser des Geräts, nichts wird übertragen). Neue Übungen kommen als Eintrag in `uebungsbausteine/stationen/katalog.json` (mit `pfad`) und als Datei in `uebungsbausteine/inhalte/` dazu und erscheinen automatisch in der Auswahl.
