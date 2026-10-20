@@ -10490,7 +10490,7 @@ async function renderLernwerkstatt(){
  {title:"Üben und festigen",sub:"Ich will üben und mich auf Prüfungen vorbereiten.",color:"#3fa66a",items:[
  [" ","Fachaufsatz-Training","Fachaufsatz Pädagogik/Psychologie an echten Prüfungsaufgaben üben.","fachaufsatz"],
  [" ","Zuordnungsübungen","Begriff und Erklärung zuordnen, per Knopfdruck selbst überprüfen.","zuordnung"],
- [" ","Vorbereitung auf die Kurzarbeit","22 interaktive Übungen zu Psychoanalyse und Entwicklung: Memory, Blockfall, Theorievergleich, Lückentext, Zuordnung, K-Prim.","kurzarbeit"],
+ [" ","Übungen zu LB 1","28 interaktive Übungen zu Psychoanalyse und Entwicklung: Memory, Blockfall, Theorievergleich, Lückentext, Zuordnung, K-Prim, Begriffe-Tetris und Wichtel-Schubkarrenrennen.","kurzarbeit"],
  [" ","Lern-Werkzeuge","Karteikarten, Fokus-Timer und Glossar zum selbstständigen Lernen.","lernwerkzeuge"],
  [" ","Uhr & Timer","Aktuelle Uhrzeit im Blick, plus frei einstellbarer Timer für alle.","uhr-timer"]
  ]},
@@ -14836,9 +14836,9 @@ function theorieDuellSeite(klasse,datei,titel,sub){titel=titel||"Theorie-Duell "
  ${footer()}`;
 }
 function renderKurzarbeit(){
- return`${pageHead("ÜBEN UND FESTIGEN","Vorbereitung auf die Kurzarbeit","Interaktive Übungen zu den Tafelbildern: Psychoanalyse und Entwicklung.",`<button class="secondary"onclick="go('lernwerkstatt')">← Lernwerkstatt</button> <a class="primary"href="tools/kurzarbeit/index.html"target="_blank"rel="noopener"style="text-decoration:none">Im neuen Tab öffnen ↗</a>`)}
+ return`${pageHead("ÜBEN UND FESTIGEN","Übungen zu LB 1","Interaktive Übungen zu Lernbereich 1: Psychoanalyse und Entwicklung.",`<button class="secondary"onclick="go('lernwerkstatt')">← Lernwerkstatt</button> <a class="primary"href="tools/kurzarbeit/index.html"target="_blank"rel="noopener"style="text-decoration:none">Im neuen Tab öffnen ↗</a>`)}
  <div class="card"style="margin-bottom:12px"><small style="color:var(--muted)">Tippe eine Übung an, sie startet sofort. Läuft komplett im Browser: Es werden keine Daten gespeichert oder übertragen.</small></div>
- <iframe src="tools/kurzarbeit/index.html?lokal=1"title="Vorbereitung auf die Kurzarbeit"style="width:100%;height:80vh;border:1px solid var(--line,#ddd);border-radius:12px;background:#fff"allow="fullscreen"></iframe>
+ <iframe src="tools/kurzarbeit/index.html?lokal=1"title="Übungen zu LB 1"style="width:100%;height:80vh;border:1px solid var(--line,#ddd);border-radius:12px;background:#fff"allow="fullscreen"></iframe>
  ${footer()}`;
 }
 function renderTheorieDuell(){return theorieDuellSeite("12","theorie-duell-beamer.html")}
