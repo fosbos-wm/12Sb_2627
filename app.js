@@ -4703,7 +4703,7 @@ Object.assign(window,{pp12Tafel,pp12KompassDrucken});
 // Gleiche Oberflächen wie im Modulplan der F11Sb, hier je Schulwoche unter den Unterrichtsstunden (Plus-Zeichen).
 // Sammlungen in Firestore: ppModule, ppStundenAntworten, ppKursFortschritt.
 // ============================================================
-const PPM_ZUSATZ=["apt","selbstlern","kprim","rallye","uebung"];
+const PPM_ZUSATZ=["apt","selbstlern","kprim","rallye","uebung","karteikarten"];
 // Schulwochen der 12. Klasse (Montag als ID). Wochen, die ganz in den Ferien liegen, entfallen.
 const SCHULWOCHEN_12=(()=>{
  const out=[],letzter=PP12_PLAN[PP12_PLAN.length-1].d;
