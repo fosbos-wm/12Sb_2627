@@ -4723,7 +4723,8 @@ const PPM_TYPEN={
  selbstlern:{icon:"🎒",name:"Selbstlernkurs",kurz:"Selbstlernkurs",art:"Selbstlernkurs",text:"Schüler:innen bearbeiten den Kurs selbstständig von A bis Z."},
  experiment:{icon:"🧪",name:"Experiment (interaktive Einheit)",kurz:"Experiment",art:"Experiment",text:"„Das Experiment“ als interaktive Einheit. Du wählst selbst, welche Teile dabei sind."},
  rallye:{icon:"🚩",name:"Lernrallye",kurz:"Lernrallye",art:"Lernrallye",text:"Stationen mit Aufgaben, per QR-Code oder der Reihe nach, einzeln oder in Teams, mit Punkten und Rangliste."},
- uebung:{icon:"🧩",name:"Vertiefungs- / Übungsbaustein",kurz:"Übungsbaustein",art:"Übungsbaustein",text:"Interaktive Übungen (Memory, Blockfall, Lückentext, Zuordnung, Tetris, Wichtel-Rennen …) für die Klasse freischalten, als einzelne Übung oder als ganzer Ordner."}
+ uebung:{icon:"🧩",name:"Vertiefungs- / Übungsbaustein",kurz:"Übungsbaustein",art:"Übungsbaustein",text:"Interaktive Übungen (Memory, Blockfall, Lückentext, Zuordnung, Tetris, Wichtel-Rennen …) für die Klasse freischalten, als einzelne Übung oder als ganzer Ordner."},
+ karteikarten:{icon:"🗂️",name:"Karteikarten (Definitionen)",kurz:"Karteikarten",art:"Karteikarten",text:"Digitale Karteikarten mit den wichtigsten Fachbegriffen und Definitionen aus LB 1 bis LB 4, zum selbstständigen Lernen."}
 };
 const PPM_EINHEITEN={experiment:{icon:"🧪",name:"Das Experiment – interaktive Stunde",text:"Kaugummi-Versuch in Kleingruppen, Klassenvergleich, Merkmale eines Experiments und Abschlussquiz."}};
 // Dauer eines Moduls: eine Unterrichtsstunde (45 Min.), Doppelstunde, 120 oder 180 Minuten,
@@ -4742,7 +4743,7 @@ const PPM_DAUERN=[
 // Pro Schulwoche stehen 6,3 Unterrichtsstunden zu je 45 Minuten (285 Minuten) zur Verfügung. Wochen mit Praktikum (fpA-Blöcke)
 // und Ferien sind gesperrt. Eine ganze Woche (1 bis 3 Wochen) belegt die Woche vollständig.
 const PPM_STD_PRO_WOCHE="6,3",PPM_MIN_PRO_STUNDE=45,PPM_MIN_PRO_WOCHE=285; // 6 Stunden + 15 Minuten (z. B. K-Prim-Test) = 285 Minuten = 6,3 Stunden
-const PPM_DAUER_STANDARD={projekt:"90",stunde:"90",experiment:"90",apt:"90",kprim:"45",selbstlern:"90",rallye:"90",uebung:"45"};
+const PPM_DAUER_STANDARD={projekt:"90",stunde:"90",experiment:"90",apt:"90",kprim:"45",selbstlern:"90",rallye:"90",uebung:"45",karteikarten:"45"};
 function ppmDauerKey(m){
  if(m&&PPM_DAUERN.some(d=>d.k===m.dauer))return m.dauer;
  const n=Math.max(1,Number(m&&m.wochen)||1);
@@ -5201,6 +5202,11 @@ async function ppmDialog(id,typ,woche,opt){
   extra=`<label>Welcher Baustein wird freigeschaltet?<select id="ppmUbZiel">${ubOptionen(ubKat,bearb&&bearb.ubZiel)}</select></label>
    <p style="font-size:13px;color:var(--muted);margin:0">Ein ganzer Ordner enthält mehrere Übungen zu einem Thema, die Schüler:innen suchen sich dann selbst eine aus. Die Übungen laufen im Browser, es werden keine Daten gespeichert oder übertragen. Als erledigt markieren sich die Schüler:innen selbst (nur auf ihrem Gerät).</p>`;
  }
+ if(t==="karteikarten"){
+  const kl=bearb&&Array.isArray(bearb.kkLb)&&bearb.kkLb.length?bearb.kkLb:[1,2,3,4];
+  extra=`<fieldset style="border:1px solid var(--line,#d6e0e8);border-radius:10px;padding:8px 12px"><legend style="font-size:13px;padding:0 6px">Welche Bereiche stehen den Schüler:innen zur Verfügung?</legend>${[1,2,3,4].map(n=>`<label style="display:inline-flex;gap:6px;align-items:center;margin-right:14px"><input type="checkbox" class="ppmKkLb" value="${n}"${kl.includes(n)?" checked":""}> LB ${n}</label>`).join("")}</fieldset>
+   <p style="font-size:13px;color:var(--muted);margin:0">Die Karteikarten zeigen den Begriff, auf der Rückseite steht die Definition. Schüler:innen markieren selbst, was sie schon wissen. Der Lernstand bleibt nur im Browser des Geräts, es werden keine Daten übertragen.</p>`;
+ }
  if(t==="rallye"){
   extra=`<label>Wie spielen die Schüler:innen?<select id="ppmRModus"><option value="einzeln"${bearb&&bearb.rModus==="team"?"":" selected"}>Einzeln: Jede Person sammelt eigene Punkte</option><option value="team"${bearb&&bearb.rModus==="team"?" selected":""}>In Teams: Die Punkte zählen für das Team</option></select></label>
    <label>Freischaltung der Stationen<select id="ppmRFrei">${Object.entries(LR_FREISCHALTUNG).map(([k,v])=>`<option value="${k}"${(bearb&&bearb.rFreischaltung||"qr")===k?" selected":""}>${esc(v)}</option>`).join("")}</select></label>
@@ -5296,7 +5302,7 @@ async function ppmDialog(id,typ,woche,opt){
   if(!pr.ok){toast("In dieser Woche ist nicht genug Platz (6,3 Unterrichtsstunden pro Woche).");return;}
   const dk=$("ppmDauer").value,def=PPM_DAUERN.find(d=>d.k===dk);
   const daten={modul:t,lb,titel:ti.value.trim(),start:$("ppmStart").value,dauer:dk,wochen:def?def.wochen:(Number(dk.slice(1))||1),notiz:$("ppmNotiz").value.trim()};
-  if(!daten.titel){const x=PROJEKT_PHASEN.find(y=>y.lbNum===lb);daten.titel=t==="projekt"&&x?x.titel:(t==="apt"?"Prüfungstraining · LB"+lb:t==="kprim"?"K-Prim-Aufgabensatz · LB"+lb:t==="stunde"?"Deeper-Learning-Einheit · LB"+lb:t==="experiment"?"Das Experiment":t==="rallye"?"Lernrallye · LB"+lb:t==="uebung"?"Übungsbaustein · LB"+lb:"Selbstlernkurs · LB"+lb);}
+  if(!daten.titel){const x=PROJEKT_PHASEN.find(y=>y.lbNum===lb);daten.titel=t==="projekt"&&x?x.titel:(t==="apt"?"Prüfungstraining · LB"+lb:t==="kprim"?"K-Prim-Aufgabensatz · LB"+lb:t==="stunde"?"Deeper-Learning-Einheit · LB"+lb:t==="experiment"?"Das Experiment":t==="rallye"?"Lernrallye · LB"+lb:t==="uebung"?"Übungsbaustein · LB"+lb:t==="karteikarten"?"Karteikarten":"Selbstlernkurs · LB"+lb);}
   if(projektId)daten.projektId=projektId;
   if(t==="projekt"&&$("ppmDirekt"))daten.direkt=$("ppmDirekt").value;
   if(t==="stunde")daten.phase=Number($("ppmPhase").value);
@@ -5306,6 +5312,7 @@ async function ppmDialog(id,typ,woche,opt){
    const min=ppmExpMinuten(daten.teile);
    if(def&&def.min&&min>def.min&&!confirm(`Die gewählten Teile brauchen etwa ${min} Minuten, eingeplant sind ${def.min}. Trotzdem speichern?`))return;
   }
+  if(t==="karteikarten"){const ks=[...document.querySelectorAll(".ppmKkLb:checked")].map(x=>Number(x.value));daten.kkLb=ks.length?ks:[1,2,3,4];if(!ti.value.trim())daten.titel="Karteikarten · "+(daten.kkLb.length===4?"LB 1 bis LB 4":daten.kkLb.map(n=>"LB "+n).join(", "));}
   if(t==="rallye"){daten.rModus=$("ppmRModus").value;daten.rFreischaltung=$("ppmRFrei").value;}
   if(t==="uebung"){daten.ubZiel=$("ppmUbZiel").value;if(!daten.ubZiel){toast("Bitte einen Baustein auswählen.");return;}if(!ti.value.trim())daten.titel=ubZielName(daten.ubZiel,ubKat)||daten.titel;}
   if(t==="selbstlern"){
@@ -5372,6 +5379,7 @@ async function ppmModulSeite(m){
  await ppmMeineLaden();
  if(m.modul==="projekt")return await ppmProjektSeite(m);
  if(m.modul==="stunde")return await ppmStundeSeite(m);
+ if(m.modul==="karteikarten")return await ppmKarteikartenSeite(m);
  if(m.modul==="rallye")return await ppmRallyeSeite(m);
  if(m.modul==="uebung")return await ppmUebungSeite(m);
  if(m.modul==="kprim")return await ppmKprimSeite(m);
@@ -6800,6 +6808,15 @@ const LR_CSS=`<style>
 </style>`;
 
 // ------------------------------------------------------------ Modulseite
+async function ppmKarteikartenSeite(m){
+ const lb=(Array.isArray(m.kkLb)&&m.kkLb.length?m.kkLb:[1,2,3,4]).filter(n=>n>=1&&n<=4),url="karteikarten/index.html?lb="+lb.join(",");
+ return`${ppmKopf(m,`<p style="color:var(--muted)">${lb.length===4?"LB 1 bis LB 4":lb.map(n=>"LB "+n).join(", ")}</p>`)}
+ <div class="ppm-box"><h2>Karteikarten</h2>
+  <p style="color:var(--muted);font-size:13px">Schau dir den Begriff an, überlege die Definition und tippe die Karte an. Dann bewertest du, ob du es gewusst hast. Dein Lernstand bleibt nur auf diesem Gerät.</p>
+  <iframe src="${esc(url)}" title="Karteikarten" style="width:100%;height:84vh;min-height:560px;border:1px solid var(--line,#ddd);border-radius:12px;background:#fff" allow="fullscreen"></iframe>
+  <div style="margin-top:12px"><a class="ppm-btn" href="${esc(url)}" target="_blank" rel="noopener" style="text-decoration:none">Im neuen Tab öffnen ↗</a></div></div>
+ ${footer()}`;
+}
 async function ppmRallyeSeite(m){
  const lehrer=isTeacher();
  const stationen=m.stationen||[];

@@ -42,3 +42,7 @@ Siehe Export/Import mit `gcloud firestore export/import`. Schülerdaten nicht mi
 ## Vertiefungs- / Übungsbausteine (Modulart „Übungsbaustein“)
 
 Die interaktiven Übungen liegen im Ordner `uebungsbausteine/` (früher `tools/kurzarbeit/`, der alte Ordner und die Kachel „Übungen zu LB 1“ entfallen). Die Lehrkraft schaltet sie im Unterrichtsplan frei: **＋ Modul → Vertiefungs- / Übungsbaustein**, dann einen ganzen Ordner (z. B. „LB 1 › Psychoanalyse“) oder eine einzelne Übung wählen, Woche und Dauer festlegen. Schüler:innen sehen den Baustein erst, wenn er im Plan steht, öffnen ihn auf der Modulseite und können ihn selbst als erledigt markieren (Haken nur im Browser des Geräts, nichts wird übertragen). Neue Übungen kommen als Eintrag in `uebungsbausteine/stationen/katalog.json` (mit `pfad`) und als Datei in `uebungsbausteine/inhalte/` dazu und erscheinen automatisch in der Auswahl.
+
+## Karteikarten (Definitionen LB 1 bis LB 4)
+
+Im Modulplan: **＋ Modul → Karteikarten (Definitionen)**. Der Ordner `karteikarten/` enthält die Seite (`index.html`) und die 117 Karten der 12. Klasse (`karten.js`, aus „Definitionen und wichtige Begriffe Lernbereich 12.1 bis 12.4“). Beim Anlegen wählst du, welche Lernbereiche (LB 1 bis LB 4) freigeschaltet sind. Vorderseite: Begriff, Rückseite: Definition. Schüler:innen bewerten „Gewusst“ oder „Nochmal üben“, der Lernstand bleibt nur im Browser. Neue Karten ergänzt du in `karten.js` (Felder: id, lb, g = Thema, b = Begriff, z = Zusatz, d = Definition).
